@@ -1,4 +1,95 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: "Inter", sans-serif, 'Courier New', Courier, monospace;
+}
+
+h1, p, button, input {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* MAIN HEADER */
+
+.header-section {
+    height: 21%;
+    border: 2px solid black;
+    background-image: url("/Images/background-image.png");
+    background-color: black;
+    display: flex;
+}
+
+.header-section-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.fw {
+    width: 90%;
+    margin: auto;
+}
+
+
+.title, .my-watchlist {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+
+
+/* SEARCH FILM SECTION */
+
+
+.form-wrapper {
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    padding: .5rem 1rem;
+    margin: -1rem auto 0 ;
+    gap: 6px;
+}
+
+
+
+.form-wrapper, .search-btn {
+    background-color: white;
+}
+
+
+.search-input, .search-btn {
+    height: 2rem;
+    border: none;
+}
+
+.search-icon {
+    align-self: center;
+    color: gray;
+}
+
+
+
+/* MAIN FILM SECTION */
+
+.film-section {
+    height: 72.5%;
+}
+
+.film-wrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.fa-film {
+    font-size: 5rem;
+    color: lightgray;
 }

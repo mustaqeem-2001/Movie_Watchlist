@@ -76,7 +76,7 @@ h1, p, button, input {
 }
 
 .search-btn {
-    border-left: 1px solid gray;
+    border-left: 1px solid lightgray;
     padding: .5rem 1rem;
 
 }

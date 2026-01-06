@@ -4,6 +4,7 @@ const filmWrapper = document.getElementById("filmWrapper");
 searchBtn.addEventListener("click", async function(e) {
     e.preventDefault();
     const htmlOutput = await getData();
+    filmWrapper.classList.remove("default-center");
     filmWrapper.innerHTML = htmlOutput;
 })
 
@@ -36,13 +37,17 @@ function renderMovies(moviesArr) {
             <div class="movie-container">
                 <img class="movie-poster" src="${movie.Poster}" alt=""/>
                 <div class="movie-details">
-                    <h2 class="movie-title">${movie.Title}</h2>
-                    <div class="movie-rating">${movie.imdbRating}</div>
-                    <div class="movie-runtime">${movie.Runtime}</div>
-                    <div class="movie-genre">${movie.Genre}</div>
-                    <div class="add-movie-to-watchlist"> 
-                        <i></i>
-                        Watchlist
+                    <div class="flex">
+                        <h2 class="movie-title">${movie.Title}</h2>
+                        <div class="movie-rating">${movie.imdbRating}</div>
+                    </div>
+                    <div class="movie-rt-g-w flex">
+                        <div class="movie-runtime">${movie.Runtime}</div>
+                        <div class="movie-genre">${movie.Genre}</div>
+                        <div class="add-movie-to-watchlist"> 
+                            <i class="fa-solid fa-circle-plus"></i>
+                            Watchlist
+                        </div>
                     </div>
                     <div class="movie-plot">${movie.Plot}</div>
                 </div>

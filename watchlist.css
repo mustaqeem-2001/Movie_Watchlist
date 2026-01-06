@@ -1,0 +1,14 @@
+.find-film {
+    font-size: 1.25rem;
+}
+
+.watchlist-pretext {
+    color: lightgray;
+    margin-bottom:1rem;
+    font-size: 2.5rem
+}
+
+.add-movies-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+}

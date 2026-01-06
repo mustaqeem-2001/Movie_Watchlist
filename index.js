@@ -58,7 +58,7 @@ function renderMovies(moviesArr) {
                         <div class="movie-genre">${movie.Genre}</div>
                         <div class="add-movie-to-watchlist"> 
                             <i class="fa-solid fa-circle-plus"></i>
-                            Watchlist
+                            <span>Watchlist</span>
                         </div>
                     </div>
                     <div class="movie-plot">${movie.Plot}</div>

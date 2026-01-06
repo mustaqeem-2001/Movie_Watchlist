@@ -12,6 +12,7 @@ h1, h2, p, button, input, a {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 /* MAIN HEADER */
@@ -40,6 +41,14 @@ a {
 .title, .my-watchlist {
     color: white;
     margin-bottom: 1rem;
+}
+
+.title {
+    font-size: 3.5rem;
+}
+
+.my-watchlist {
+    font-size: 1.25rem;
 }
 
 

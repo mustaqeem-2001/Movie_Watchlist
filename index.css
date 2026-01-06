@@ -4,11 +4,15 @@ html, body {
     font-family: "Inter", sans-serif, 'Courier New', Courier, monospace;
 }
 
-h1, h2, p, button, input {
+h1, h2, p, button, input, a {
     margin: 0;
     padding: 0;
+    
 }
 
+a {
+    text-decoration: none;
+}
 
 /* MAIN HEADER */
 
@@ -36,6 +40,14 @@ h1, h2, p, button, input {
 .title, .my-watchlist {
     color: white;
     margin-bottom: 1rem;
+}
+
+
+/* Error message */
+
+.err-message {
+    font-size: 2.5rem;
+    color: lightgray;
 }
 
 

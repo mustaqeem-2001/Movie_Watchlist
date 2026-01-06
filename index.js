@@ -4,8 +4,16 @@ const filmWrapper = document.getElementById("filmWrapper");
 searchBtn.addEventListener("click", async function(e) {
     e.preventDefault();
     const htmlOutput = await getData();
-    filmWrapper.classList.remove("default-center");
-    filmWrapper.innerHTML = htmlOutput;
+
+    if (htmlOutput === Error) {
+        filmWrapper.innerHTML = `
+            <p class="err-message" role="alert">Unable to find what you're looking for. Please try another search.</p>
+        `
+    }
+    else {
+        filmWrapper.classList.remove("default-center");
+        filmWrapper.innerHTML = htmlOutput;
+     }
 })
 
 async function getData() {
@@ -15,6 +23,10 @@ async function getData() {
     const searchMovies = await fetch(`http://www.omdbapi.com/?apikey=49133b6f&s=${searchInput}&type=movie`);
     const searchData = await searchMovies.json();
     
+    if (!searchData.Search) {
+        return Error;
+    }
+
     // Gets specific movie details that are missing from the previous fetch response.    
     //  Same as searchMovies.Search array but, this time not just basic data, the whole details of each movie.
 

@@ -135,6 +135,7 @@ a {
     display: flex;
     gap: 1rem;
     border-bottom: 1px solid lightgray;
+    margin-right: auto;
 }
 
 .movie-details {

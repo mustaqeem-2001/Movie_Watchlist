@@ -16,7 +16,10 @@ searchBtn.addEventListener("click", async function(e) {
         filmWrapper.innerHTML = htmlOutput;
      }
 
-     filmWrapper.addEventListener("click", async function(e) {
+})
+
+
+filmWrapper.addEventListener("click", async function(e) {
         console.log(e);
         if(!e.target.parentElement.dataset.id) 
         {
@@ -26,26 +29,7 @@ searchBtn.addEventListener("click", async function(e) {
             await fetch(`http://www.omdbapi.com/?apikey=49133b6f&i=${e.target.parentElement.dataset.id}&type=movie`)
             .then(response => response.json())
             .then(function(movie) {
-                localStorage.setItem(`${e.target.parentElement.dataset.id}`, `
-                    <div class="movie-container">
-                        <img class="movie-poster" src="${movie.Poster}" alt=""/>
-                        <div class="movie-details">
-                            <div class="flex">
-                                <h2 class="movie-title">${movie.Title}</h2>
-                                <div class="movie-rating">${movie.imdbRating}</div>
-                            </div>
-                            <div class="movie-rt-g-w flex">
-                                <div class="movie-runtime">${movie.Runtime}</div>
-                                <div class="movie-genre">${movie.Genre}</div>
-                                <div data-id="${movie.imdbID}" class="add-movie-to-watchlist"> 
-                                    <i class="fa-solid fa-circle-plus"></i>
-                                    <span>Watchlist</span>
-                                </div>
-                            </div>
-                            <div class="movie-plot">${movie.Plot}</div>
-                        </div>
-                    </div>
-                `)
+                localStorage.setItem(`${movie.imdbID}`, JSON.stringify(movie))
             });
             console.log(localStorage.getItem(`${e.target.parentElement.dataset.id}`));
             e.target.parentElement.innerHTML = `
@@ -53,8 +37,6 @@ searchBtn.addEventListener("click", async function(e) {
             <span class="movie-added">Added</span>
             `
         }
-    
-    })
     
 })
 

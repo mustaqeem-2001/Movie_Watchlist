@@ -1,6 +1,7 @@
 const searchBtn = document.getElementById("searchBtn");
 const filmWrapper = document.getElementById("filmWrapper");
 
+
 searchBtn.addEventListener("click", async function(e) {
     e.preventDefault();
     const htmlOutput = await getData();
@@ -14,7 +15,49 @@ searchBtn.addEventListener("click", async function(e) {
         filmWrapper.classList.remove("default-center");
         filmWrapper.innerHTML = htmlOutput;
      }
+
+     filmWrapper.addEventListener("click", async function(e) {
+        console.log(e);
+        if(!e.target.parentElement.dataset.id) 
+        {
+            console.error("Not a valid click to be added to watchlist");
+        }
+        else {
+            await fetch(`http://www.omdbapi.com/?apikey=49133b6f&i=${e.target.parentElement.dataset.id}&type=movie`)
+            .then(response => response.json())
+            .then(function(movie) {
+                localStorage.setItem(`${e.target.parentElement.dataset.id}`, `
+                    <div class="movie-container">
+                        <img class="movie-poster" src="${movie.Poster}" alt=""/>
+                        <div class="movie-details">
+                            <div class="flex">
+                                <h2 class="movie-title">${movie.Title}</h2>
+                                <div class="movie-rating">${movie.imdbRating}</div>
+                            </div>
+                            <div class="movie-rt-g-w flex">
+                                <div class="movie-runtime">${movie.Runtime}</div>
+                                <div class="movie-genre">${movie.Genre}</div>
+                                <div data-id="${movie.imdbID}" class="add-movie-to-watchlist"> 
+                                    <i class="fa-solid fa-circle-plus"></i>
+                                    <span>Watchlist</span>
+                                </div>
+                            </div>
+                            <div class="movie-plot">${movie.Plot}</div>
+                        </div>
+                    </div>
+                `)
+            });
+            console.log(localStorage.getItem(`${e.target.parentElement.dataset.id}`));
+            e.target.parentElement.innerHTML = `
+            <i class="fa-solid fa-check"></i>
+            <span class="movie-added">Added</span>
+            `
+        }
+    
+    })
+    
 })
+
 
 async function getData() {
 
@@ -34,16 +77,16 @@ async function getData() {
         return fetch(`http://www.omdbapi.com/?apikey=49133b6f&i=${movie.imdbID}&type=movie`)
             .then(response => response.json())
     }) 
-    console.log(searchMoviesDetailed); // Displays Promises as an array
+    // console.log(searchMoviesDetailed); // Displays Promises as an array
 
     const movies = await Promise.all(searchMoviesDetailed) // Solves the Promises as an array issue and will display the actual data.
-    // console.log(movies);
+     console.log(movies);
 
     return await renderMovies(movies);
 }
 
 function renderMovies(moviesArr) {
-    console.log(moviesArr);
+    // console.log(moviesArr);
     const htmlOutput = moviesArr.map(movie => {
         return `
             <div class="movie-container">
@@ -56,7 +99,7 @@ function renderMovies(moviesArr) {
                     <div class="movie-rt-g-w flex">
                         <div class="movie-runtime">${movie.Runtime}</div>
                         <div class="movie-genre">${movie.Genre}</div>
-                        <div class="add-movie-to-watchlist"> 
+                        <div data-id="${movie.imdbID}" class="add-movie-to-watchlist"> 
                             <i class="fa-solid fa-circle-plus"></i>
                             <span>Watchlist</span>
                         </div>
@@ -66,7 +109,13 @@ function renderMovies(moviesArr) {
             </div>
         `
         }).join('');
-    console.log(htmlOutput);;
+    // console.log(htmlOutput);;
 
     return htmlOutput;
+}
+
+
+
+function addWatchlist() {
+
 }

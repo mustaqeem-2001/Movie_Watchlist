@@ -164,3 +164,9 @@ a {
     color: gray;
 }
 
+.movie-added,
+.fa-check {
+    color: green;
+    font-weight: 900;
+}
+

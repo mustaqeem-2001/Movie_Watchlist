@@ -95,9 +95,3 @@ function renderMovies(moviesArr) {
 
     return htmlOutput;
 }
-
-
-
-function addWatchlist() {
-
-}

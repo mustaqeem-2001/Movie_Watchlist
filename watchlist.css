@@ -23,3 +23,11 @@
     height: auto;
 }
 
+
+.movie-added,
+.fa-check {
+    color: red;
+    font-weight: 900;
+}
+
+

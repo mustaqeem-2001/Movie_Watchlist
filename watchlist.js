@@ -3,6 +3,18 @@ const filmWrapper = document.getElementById("filmWrapper");
 
 filmWrapper.innerHTML = render();
 
+filmWrapper.addEventListener("click", function(e) {
+    if(!e.target.parentElement.dataset.id) 
+    {
+        console.error("Not a valid click to be added to watchlist");
+    }
+    else {
+        removeMovieFromWatchList(e);
+    }
+})
+
+
+
 function render() {
     if(!localStorage) {
         return `
@@ -37,7 +49,6 @@ function render() {
             </div>
         `
         }).join('');
-        console.log(htmlOutput);
     return htmlOutput;
 }
 
@@ -54,8 +65,13 @@ function getAllLocalStorage() {
   return items;
 }
 
-function removeMovieFromWatchList() {
-    
+function removeMovieFromWatchList(e) {
+    localStorage.removeItem(e.target.parentElement.dataset.id);
+    e.target.parentElement.innerHTML = `
+        <i class="fa-solid fa-check"></i>
+        <span class="movie-added">Removed</span>
+    `
+    filmWrapper.innerHTML =  render();
 }
 
 

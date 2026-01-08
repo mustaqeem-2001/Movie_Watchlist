@@ -26,7 +26,7 @@ filmWrapper.addEventListener("click", async function(e) {
             console.error("Not a valid click to be added to watchlist");
         }
         else {
-            await fetch(`http://www.omdbapi.com/?apikey=49133b6f&i=${e.target.parentElement.dataset.id}&type=movie`)
+            await fetch(`https://www.omdbapi.com/?apikey=49133b6f&i=${e.target.parentElement.dataset.id}&type=movie`)
             .then(response => response.json())
             .then(function(movie) {
                 localStorage.setItem(`${movie.imdbID}`, JSON.stringify(movie))
@@ -45,7 +45,7 @@ async function getData() {
 
     // Gets list of movies that matches the search input
     const searchInput = document.getElementById("searchInput").value;
-    const searchMovies = await fetch(`http://www.omdbapi.com/?apikey=49133b6f&s=${searchInput}&type=movie`);
+    const searchMovies = await fetch(`https://www.omdbapi.com/?apikey=49133b6f&s=${searchInput}&type=movie`);
     const searchData = await searchMovies.json();
     
     if (!searchData.Search) {
@@ -56,7 +56,7 @@ async function getData() {
     //  Same as searchMovies.Search array but, this time not just basic data, the whole details of each movie.
 
     const searchMoviesDetailed = searchData.Search.map(movie => {
-        return fetch(`http://www.omdbapi.com/?apikey=49133b6f&i=${movie.imdbID}&type=movie`)
+        return fetch(`https://www.omdbapi.com/?apikey=49133b6f&i=${movie.imdbID}&type=movie`)
             .then(response => response.json())
     }) 
     // console.log(searchMoviesDetailed); // Displays Promises as an array

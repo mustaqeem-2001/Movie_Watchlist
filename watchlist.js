@@ -34,7 +34,10 @@ function render() {
                 <div class="movie-details">
                     <div class="flex">
                         <h2 class="movie-title">${movie.Title}</h2>
-                        <div class="movie-rating">${movie.imdbRating}</div>
+                        <div class="movie-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <span>${movie.imdbRating}</span>
+                        </div>
                     </div>
                     <div class="movie-rt-g-w flex">
                         <div class="movie-runtime">${movie.Runtime}</div>

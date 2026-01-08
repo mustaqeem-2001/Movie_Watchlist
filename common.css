@@ -155,6 +155,10 @@ a {
     gap: 2rem;
 }
 
+.fa-star {
+    color: gold;
+}
+
 .add-movie-to-watchlist {
     cursor: pointer;
 }
@@ -244,7 +248,7 @@ a {
     .flex {
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
         justify-content: center;
     }
 

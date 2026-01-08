@@ -98,7 +98,7 @@ a {
 .search-btn {
     border-left: 1px solid lightgray;
     padding: .5rem 1rem;
-
+    border-radius: 6px;
 }
 
 
